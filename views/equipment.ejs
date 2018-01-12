@@ -1,0 +1,17 @@
+<html>
+  <head>
+
+  </head>
+  <body>
+      <h1>  The Check Page </h1>
+    <% include ./partials/nav  %>
+
+    <ul>
+      <% for(var i=0; i < data.length; i++) { %>
+          <li><%= data[i].rare %> <%= data[i].name %> <%= data[i].category %></li>
+          
+      <% } %>
+    </ul>
+
+  </body>
+</html>

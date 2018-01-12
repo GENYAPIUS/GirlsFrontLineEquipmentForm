@@ -1,0 +1,26 @@
+<html>
+  <head>
+
+  </head>
+  <body>
+      <h1>  The My-todo Page </h1>
+    <% include ./partials/nav  %>
+
+    <p>
+    <form method='post' action="/mytodo"><br>
+        username:<input type="text" name="username" ><br>
+        email: <input type="text" name="email" ><br>
+        password: <input type="password" name="password" ><br>
+         <input type="submit" value="Submit"><br>
+    </form>
+  </p>
+
+    <ul>
+      <% for(var i=0; i < data.length; i++) { %>
+          <li><%= data[i].username %>,<%= data[i].email %></li>
+      <% } %>
+
+    </ul>
+
+  </body>
+</html>

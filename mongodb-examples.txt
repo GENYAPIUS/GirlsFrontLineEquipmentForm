@@ -1,0 +1,43 @@
+show dbs
+
+use mycustomers
+
+db.createUser({
+	user:"test",
+	pwd:"test",
+	roles:["readWrite", "dbAdmin"]
+});
+
+
+
+db.createCollection('customers');
+
+db.customers.insert({first_name:"John",last_name:"Doe"});
+db.customers.find();
+db.customers.insert([ {first_name:"Steven",last_name:"Smith"}, {first_name:"John",last_name:"Johnson", gender:"female"}]);
+
+db.customers.find().pretty();
+
+db.customers.update({first_name:"John"},{first_name:"John", last_name:"Doe", gender:"male"});
+
+db.customers.update({first_name:"Steven"},{$set:{gender:"male"}});
+db.customers.update({first_name:"Steven"},{$inc:{age:5}});
+db.customers.update({first_name:"Steven"},{$unset:{age:1}});
+db.customers.update({first_name:"Mary"},{first_name:"Mary", last_name:"Samson"}, {upsert: true});
+db.customers.update({first_name:"Steven"},{$rename:{"gender":"sex"}});
+
+db.customers.remove({first_name:"Steven"});
+
+
+
+
+{
+	first_name:"John",
+	last_name:"Doe",
+	memberships:["mem1", "mem2"],
+	address:{
+		street:"4 main st",
+		city:"Syracuse"
+	}
+	contacts:[{name:"KB", relationship:"friend"}]
+}
